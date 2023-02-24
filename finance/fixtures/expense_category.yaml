@@ -1,0 +1,4 @@
+- model: finance.expensecategory
+  pk: 1
+  fields:
+    name: Продукты
