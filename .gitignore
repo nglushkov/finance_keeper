@@ -5,3 +5,4 @@ finance/__pycache__/
 finance/migrations/__pycache__/
 finance_keeper/__pycache__/
 /.idea/
+/fixtures/
