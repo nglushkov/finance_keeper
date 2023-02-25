@@ -3,11 +3,13 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from finance.models import Expense, Income, Bill
-from finance.serializers import ExpenseSerializer, IncomeSerializer, BillSerializer
+from finance.models import Bill
+from finance.serializers import BillSerializer
 
 
 class BillList(APIView):
+    serializer_class = BillSerializer
+
     def get(self, request):
         expenses = Bill.objects.all()
         serializer = BillSerializer(expenses, many=True)
@@ -22,6 +24,8 @@ class BillList(APIView):
 
 
 class BillDetail(APIView):
+    serializer_class = BillSerializer
+
     def get_object(self, pk):
         try:
             return Bill.objects.get(pk=pk)

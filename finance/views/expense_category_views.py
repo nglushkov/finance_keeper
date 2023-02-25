@@ -8,6 +8,8 @@ from finance.serializers import ExpenseCategorySerializer, IncomeSerializer
 
 
 class ExpenseCategoryList(APIView):
+    serializer_class = ExpenseCategorySerializer
+
     def get(self, request):
         expenses = ExpenseCategory.objects.all()
         serializer = ExpenseCategorySerializer(expenses, many=True)
@@ -22,6 +24,8 @@ class ExpenseCategoryList(APIView):
 
 
 class ExpenseCategoryDetail(APIView):
+    serializer_class = ExpenseCategorySerializer
+
     def get_object(self, pk):
         try:
             return ExpenseCategory.objects.get(pk=pk)

@@ -8,6 +8,8 @@ from finance.serializers import ExpenseSerializer, IncomeSerializer, MovementSer
 
 
 class MovementList(APIView):
+    serializer_class = MovementSerializer
+
     def get(self, request):
         expenses = Movement.objects.all()
         serializer = MovementSerializer(expenses, many=True)
@@ -22,6 +24,8 @@ class MovementList(APIView):
 
 
 class MovementDetail(APIView):
+    serializer_class = MovementSerializer
+
     def get_object(self, pk):
         try:
             return Movement.objects.get(pk=pk)

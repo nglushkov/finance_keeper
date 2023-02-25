@@ -8,6 +8,8 @@ from finance.serializers import CurrencySerializer
 
 
 class CurrencyList(APIView):
+    serializer_class = CurrencySerializer
+
     def get(self, request):
         currencies = Currency.objects.all()
         serializer = CurrencySerializer(currencies, many=True)
@@ -22,6 +24,8 @@ class CurrencyList(APIView):
 
 
 class CurrencyDetail(APIView):
+    serializer_class = CurrencySerializer
+
     def get_object(self, pk):
         try:
             return Currency.objects.get(pk=pk)
