@@ -3,14 +3,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from finance.models import Income, Income, IncomeCategory
-from finance.serializers import IncomeCategorySerializer, IncomeCategorySerializer
+from finance.models import IncomeCategory
+from finance.serializers import IncomeCategorySerializer
 
 
 class IncomeCategoryList(APIView):
     def get(self, request):
-        expenses = IncomeCategory.objects.all()
-        serializer = IncomeCategorySerializer(expenses, many=True)
+        categories = IncomeCategory.objects.all()
+        serializer = IncomeCategorySerializer(categories, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -29,19 +29,19 @@ class IncomeCategoryDetail(APIView):
             raise Http404
 
     def get(self, request, pk):
-        expense = self.get_object(pk)
-        serializer = IncomeCategorySerializer(expense)
+        category = self.get_object(pk)
+        serializer = IncomeCategorySerializer(category)
         return Response(serializer.data)
 
     def put(self, request, pk):
-        expense = self.get_object(pk)
-        serializer = IncomeCategorySerializer(expense, data=request.data)
+        category = self.get_object(pk)
+        serializer = IncomeCategorySerializer(category, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        expense = self.get_object(pk)
-        expense.delete()
+        category = self.get_object(pk)
+        category.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

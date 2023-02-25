@@ -10,27 +10,27 @@ from finance.views.income_views import IncomeList, IncomeDetail
 from finance.views.movement_views import MovementDetail, MovementList
 
 urlpatterns = [
-    path('expenses/', ExpenseList.as_view()),
-    path('expenses/<int:pk>/', ExpenseDetail.as_view()),
+    path('expenses', ExpenseList.as_view()),
+    path('expenses/<int:pk>', ExpenseDetail.as_view()),
 
-    path('incomes/', IncomeList.as_view()),
-    path('incomes/<int:pk>/', IncomeDetail.as_view()),
+    path('incomes', IncomeList.as_view()),
+    path('incomes/<int:pk>', IncomeDetail.as_view()),
 
-    path('expense-categories/', ExpenseCategoryList.as_view()),
-    path('expense-categories/<int:pk>/', ExpenseCategoryDetail.as_view()),
+    path('expense-categories', ExpenseCategoryList.as_view()),
+    path('expense-categories/<int:pk>', ExpenseCategoryDetail.as_view()),
 
-    path('imcome-categories/', IncomeCategoryList.as_view()),
-    path('imcome-categories/<int:pk>/', IncomeCategoryDetail.as_view()),
+    path('income-categories', IncomeCategoryList.as_view()),
+    path('income-categories/<int:pk>', IncomeCategoryDetail.as_view()),
 
-    path('currency', CurrencyList.as_view()),
-    path('currency/<int:pk>/', CurrencyDetail.as_view()),
+    path('currencies', CurrencyList.as_view()),
+    path('currencies/<int:pk>', CurrencyDetail.as_view()),
 
-    path('exchange-operation', ExchangeList.as_view()),
-    path('exchange-operation/<int:pk>/', ExchangeDetail.as_view()),
+    path('exchange-operations', ExchangeList.as_view()),
+    path('exchange-operations/<int:pk>', ExchangeDetail.as_view()),
 
-    path('bill', BillList.as_view()),
-    path('bill/<int:pk>/', BillDetail.as_view()),
+    path('bills', BillList.as_view()),
+    path('bills/<int:pk>', BillDetail.as_view()),
 
-    path('movement', MovementList.as_view()),
-    path('movement/<int:pk>/', MovementDetail.as_view()),
+    path('movements', MovementList.as_view()),
+    path('movements/<int:pk>', MovementDetail.as_view()),
 ]

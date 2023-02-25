@@ -3,14 +3,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from finance.models import Expense, Income, Currency
-from finance.serializers import ExpenseSerializer, IncomeSerializer, CurrencySerializer
+from finance.models import Currency
+from finance.serializers import CurrencySerializer
 
 
 class CurrencyList(APIView):
     def get(self, request):
-        expenses = Currency.objects.all()
-        serializer = CurrencySerializer(expenses, many=True)
+        currencies = Currency.objects.all()
+        serializer = CurrencySerializer(currencies, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -29,19 +29,19 @@ class CurrencyDetail(APIView):
             raise Http404
 
     def get(self, request, pk):
-        expense = self.get_object(pk)
-        serializer = CurrencySerializer(expense)
+        currency = self.get_object(pk)
+        serializer = CurrencySerializer(currency)
         return Response(serializer.data)
 
     def put(self, request, pk):
-        expense = self.get_object(pk)
-        serializer = CurrencySerializer(expense, data=request.data)
+        currency = self.get_object(pk)
+        serializer = CurrencySerializer(currency, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        expense = self.get_object(pk)
-        expense.delete()
+        currency = self.get_object(pk)
+        currency.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
